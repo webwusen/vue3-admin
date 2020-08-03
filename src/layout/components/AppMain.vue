@@ -1,9 +1,12 @@
 <template>
   <section class="app-main">
-    <router-view :key="key" v-slot="{Component}">
-      <transition>
+    <router-view
+      :key="key"
+      v-slot="{Component}"
+    >
+      <transition mode="out-in">
         <keep-alive>
-          <component :is="Component"></component>
+          <component :is="Component" />
         </keep-alive>
       </transition>
     </router-view>
@@ -12,12 +15,12 @@
 
 <script>
 export default {
-  name: "AppMain",
+  name: 'AppMain',
   computed: {
     key() {
       return this.$route.path;
-    },
-  },
+    }
+  }
 };
 </script>
 

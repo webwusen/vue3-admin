@@ -1,6 +1,6 @@
 @import './variables.scss';
 
-*{
+* {
   padding: 0;
   margin: 0;
 }
@@ -95,4 +95,12 @@ div:focus {
     clear: both;
     height: 0;
   }
+}
+
+.width100 {
+  width: 100%;
+}
+
+.height100 {
+  height: 100%;
 }

@@ -4,46 +4,63 @@
       <h3 class="login-title">Vue3 admin</h3>
       <div class="login-form-item">
         账号
-        <input type="text" v-model="formData.username" placeholder />
+        <input
+          v-model="formData.username"
+          type="text"
+          placeholder
+        >
       </div>
       <div class="login-form-item">
         密码
-        <input :type="passType" v-model="formData.password" />
-        <div class="passType" @click="changePassType">
-          <i
-            :class="{'iconfont':true, 'iconyanjing': passType === 'text','iconbiyan': passType === 'password' }"
-          ></i>
+        <input
+          v-model="formData.password"
+          :type="passType"
+        >
+        <div
+          class="passType"
+          @click="changePassType"
+        >
+          <i :class="{'iconfont':true, 'iconyanjing': passType === 'text','iconbiyan': passType === 'password' }" />
         </div>
       </div>
-      <button class="login-btn">Login</button>
+      <button
+        class="login-btn"
+        @click="login"
+      >Login</button>
     </div>
   </div>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive } from 'vue';
+import router from '/@/router/index.js';
 
 export default {
-  name: "Login",
+  name: 'Login',
   setup() {
     const formData = reactive({
-      username: "",
-      password: "",
+      username: '',
+      password: ''
     });
 
     // 密码框类型
-    const passType = ref("password");
+    const passType = ref('password');
 
     function changePassType() {
-      passType.value = passType.value === "password" ? "text" : "password";
+      passType.value = passType.value === 'password' ? 'text' : 'password';
+    }
+
+    function login() {
+      router.push('/dashboard');
     }
 
     return {
       formData,
       passType,
       changePassType,
+      login
     };
-  },
+  }
 };
 </script>
 
